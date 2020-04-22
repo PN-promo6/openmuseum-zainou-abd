@@ -1,30 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { AddMuseumComponent } from './add-museum/add-museum.component';
 import { AppComponent } from './app.component';
-// Service contenant le JSON de tous les musées et les méthodes associées
-import { MuseumListService } from './services/museumList.service';
-// Liste des musée : inclue SingleMuseumComponent
-import { MuseumListComponent } from './museum-list/museum-list.component';
-// Un musée dans la liste
+import { MuseumService } from './services/openmuseum.service'
 import { SingleMuseumComponent } from './single-museum/single-museum.component';
+import { IndexComponent } from './index/index.component';
+import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
 
-const appRoutes:Routes = [
-  {path: '', component: MuseumListComponent}
+
+const appRoutes: Routes = [
+  { path: 'add', component: AddMuseumComponent },
+  { path: 'museumDetail', component: MuseumDetailComponent },
+
+{ path: '', component: IndexComponent },
+
 ]
-
 @NgModule({
   declarations: [
     AppComponent,
     SingleMuseumComponent,
-    MuseumListComponent,
+    IndexComponent,
+    AddMuseumComponent,
+    MuseumDetailComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [MuseumListService],
+  providers: [MuseumService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
